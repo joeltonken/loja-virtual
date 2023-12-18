@@ -2,9 +2,8 @@ package com.estudos.dev.backend.controller;
 
 import com.estudos.dev.backend.dto.PessoaClienteRequestDTO;
 import com.estudos.dev.backend.entity.Pessoa;
-import com.estudos.dev.backend.service.PessoaService;
+import com.estudos.dev.backend.service.PessoaClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,11 +13,10 @@ import java.util.List;
 public class PessoaClienteController {
 
     @Autowired
-    private PessoaService pessoaService;
+    private PessoaClienteService pessoaService;
 
     @PostMapping("/")
     public Pessoa inserir(@RequestBody PessoaClienteRequestDTO pessoaClienteRequestDTO){
-        Pessoa pessoa = new PessoaClienteRequestDTO().converter(pessoaClienteRequestDTO);
-        return pessoaService.inserir(pessoa);
+        return pessoaService.registrar(pessoaClienteRequestDTO);
     }
 }
