@@ -1,5 +1,6 @@
 package com.estudos.dev.backend.controller;
 
+import com.estudos.dev.backend.dto.PessoaClienteRequestDTO;
 import com.estudos.dev.backend.entity.Pessoa;
 import com.estudos.dev.backend.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,8 @@ public class PessoaClienteController {
     private PessoaService pessoaService;
 
     @PostMapping("/")
-    public Pessoa inserir(@RequestBody Pessoa objeto){
-        return pessoaService.inserir(objeto);
+    public Pessoa inserir(@RequestBody PessoaClienteRequestDTO pessoaClienteRequestDTO){
+        Pessoa pessoa = new PessoaClienteRequestDTO().converter(pessoaClienteRequestDTO);
+        return pessoaService.inserir(pessoa);
     }
-
 }
