@@ -4,11 +4,14 @@ import com.estudos.dev.backend.entities.Produto;
 import com.estudos.dev.backend.entities.ProdutoImagens;
 import com.estudos.dev.backend.repositories.ProdutoImagensRepository;
 import com.estudos.dev.backend.repositories.ProdutoRepository;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -28,9 +31,18 @@ public class ProdutoImagensService {
         return produtoImagensRepository.findAll();
     }
 
-    public ProdutoImagens buscarPorId(Long id) {
-        ProdutoImagens objeto = produtoImagensRepository.findById(id).get();
-        return objeto;
+    public List<ProdutoImagens> buscarPorProduto(Long idProduto) {
+        List<ProdutoImagens> listaProdutoImagens = produtoImagensRepository.findByProdutoId(idProduto);
+
+        for (ProdutoImagens produtoImagens : listaProdutoImagens) {
+            try (InputStream in = new FileInputStream("c:/imagens/"+produtoImagens.getNome())) {
+                produtoImagens.setArquivo(IOUtils.toByteArray(in));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return listaProdutoImagens;
     }
 
     public ProdutoImagens inserir(Long idProduto, MultipartFile file) {
