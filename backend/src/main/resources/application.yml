@@ -7,7 +7,7 @@ spring:
     password:
   # Show SQL
   jpa:
-    show-sql: true
+    show-sql: false
     database-platform: org.hibernate.dialect.H2Dialect
   # Email Connection
   mail:
