@@ -1,0 +1,26 @@
+spring:
+  # H2 Connection
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: teste
+    password:
+  # Show SQL
+  jpa:
+    show-sql: false
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: false
+  # Email Connection
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: joeken.jp@gmail.com
+    password: 2023rygfgpubzuwavhyi123
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
