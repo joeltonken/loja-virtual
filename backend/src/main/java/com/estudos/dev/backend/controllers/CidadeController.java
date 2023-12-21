@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/cidade")
+@CrossOrigin
 public class CidadeController {
 
     @Autowired

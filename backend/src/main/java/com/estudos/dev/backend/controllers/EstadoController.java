@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/estado")
+@CrossOrigin
 public class EstadoController {
 
     @Autowired
