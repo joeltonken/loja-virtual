@@ -46,4 +46,20 @@ public class WebSecurityConfig {
                 }).formLogin(Customizer.withDefaults()).build();
     }
 
+//    //@formatter:off
+//        return http
+//                .httpBasic(basic -> basic.disable())
+//            .csrf(csrf -> csrf.disable())
+//            .sessionManagement(
+//            session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+//            .authorizeHttpRequests(
+//            authorizeHttpRequests -> authorizeHttpRequests
+//            .requestMatchers(
+//            "/api/pessoa-gerenciamento/**"
+//            ).permitAll()
+//                                .requestMatchers("/api/pessoa**").hasAnyAuthority("gerente"))
+//            .cors(cors -> {})
+//            .build();
+    //@formatter:on
+
 }
